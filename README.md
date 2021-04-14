@@ -18,11 +18,12 @@
 ## items
 |Column             |Type       |Options          |
 |item_name          |string     |null:false       |
+|item_details       |text       |null:false       |
 |price              |integer    |null:false       |
 |category_id        |integer    |null:false       |
 |condition_id       |integer    |null:false       |
 |shipping_charge_id |integer    |null:false       |
-|delivery_area_id   |integer    |null:false       |
+|city_id            |integer    |null:false       |
 |days_ship_id       |integer    |null:false       |
 |user               |reference  |foreign_key: true|
 
@@ -43,7 +44,7 @@
 ## deliveries
 |Column             |Type      |Options          |
 |post_code          |string    |null:false       |
-|city               |string    |null:false       |
+|city_id            |integer   |null:false       |
 |municipality       |string    |null:false       |
 |address            |string    |null:false       |
 |building_name      |string    |                 |
