@@ -19,7 +19,7 @@
 |Column             |Type       |Options          |
 |item_name          |string     |null:false       |
 |price              |integer    |null:false       |
-|category           |integer    |null:false       |
+|category_id        |integer    |null:false       |
 |condition_id       |integer    |null:false       |
 |shipping_charge_id |integer    |null:false       |
 |delivery_area_id   |integer    |null:false       |
@@ -46,7 +46,7 @@
 |city               |string    |null:false       |
 |municipality       |string    |null:false       |
 |address            |string    |null:false       |
-|building_name      |string    |null:false       |
+|building_name      |string    |                 |
 |phone_number       |string    |null:false       |
 |purchase_record    |reference |foreign_key: true|
 
