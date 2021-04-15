@@ -17,8 +17,8 @@
 
 ## items
 |Column             |Type       |Options          |
-|item_name          |string     |null:false       |
-|item_details       |text       |null:false       |
+|name          |string     |null:false       |
+|details       |text       |null:false       |
 |price              |integer    |null:false       |
 |category_id        |integer    |null:false       |
 |condition_id       |integer    |null:false       |
