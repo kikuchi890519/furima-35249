@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="Vfl8BwKdOU-0nrbI-BSE" name="ページ1">
-        <mxGraphModel dx="1289" dy="566" grid="1" gridSize="12" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="#F4F1DE" math="0" shadow="0">
+        <mxGraphModel dx="775" dy="566" grid="1" gridSize="12" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="#F4F1DE" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -22,7 +22,7 @@
                 <mxCell id="29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;labelBackgroundColor=#F4F1DE;strokeColor=#E07A5F;fontColor=#393C56;" parent="14" source="15" target="15" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="15" value="item_name (string / null:false)&#10;&#10;item_details (text / null:false)&#10;&#10;price (integer / null:false)&#10;&#10;category_id (string / null:false)&#10;&#10;condition_id (integer / null:false)&#10;&#10;shipping_charge_id (integer / null:false)&#10;&#10;city_id (integer / null:false )&#10;&#10;days_ship_id (integer / null:false )&#10;&#10;user (reference / foreign_key: true )" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#393C56;" parent="14" vertex="1">
+                <mxCell id="15" value="name (string / null:false)&#10;&#10;details (text / null:false)&#10;&#10;price (integer / null:false)&#10;&#10;category_id (string / null:false)&#10;&#10;condition_id (integer / null:false)&#10;&#10;shipping_charge_id (integer / null:false)&#10;&#10;city_id (integer / null:false )&#10;&#10;days_ship_id (integer / null:false )&#10;&#10;user (reference / foreign_key: true )" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#393C56;" parent="14" vertex="1">
                     <mxGeometry y="26" width="228" height="262" as="geometry"/>
                 </mxCell>
                 <object label="usersテーブル" id="18">
