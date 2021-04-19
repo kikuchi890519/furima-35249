@@ -19,7 +19,7 @@ class User < ApplicationRecord
   validates_format_of :password, with: PASSWORD_REGEX, message: '6文字以上半角英数字を含めて設定してください' 
   validates :password, length: { minimum: 6 }
 
-  with_options format: { with: /\A[ぁ-んァ-ン一-龥]/, message: '全角（漢字・ひらがな・カタカナ）で入力してください' } do
+  with_options format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: '全角（漢字・ひらがな・カタカナ）で入力してください' } do
     validates :family_name
     validates :first_name
   end
@@ -28,4 +28,5 @@ class User < ApplicationRecord
     validates :family_name_kana
     validates :first_name_kana 
   end
+
 end
