@@ -15,8 +15,8 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, message: '6文字以上半角英数字を含めて設定してください' 
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+  validates_format_of :password, with: PASSWORD_REGEX, message: '6文字以上半角英数字を含めて設定してください'
   validates :password, length: { minimum: 6 }
 
   with_options format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: '全角（漢字・ひらがな・カタカナ）で入力してください' } do
@@ -26,7 +26,6 @@ class User < ApplicationRecord
 
   with_options format: { with: /\A[\p{katakana}ー－&&[^ -~｡-ﾟ]]+\z/, message: '全角カタカナを入力して下さい' } do
     validates :family_name_kana
-    validates :first_name_kana 
+    validates :first_name_kana
   end
-
 end
