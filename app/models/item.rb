@@ -8,6 +8,10 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
+  belongs_to :condition
+  belongs_to :shipping_charge
+  belongs_to :city
+  belongs_to :days_ship
 
   with_options presence: true do
     validates :image
@@ -23,5 +27,11 @@ class Item < ApplicationRecord
   end
 
   # ジャンルの選択が「---」（idが0）の時は保存できないようにする
-  validates :category_id, numericality: { other_than: 0, message: 'Select'}
+  with_options numericality: { other_than: 0, message: 'Select'} do
+    validates :category_id
+    validates :condition_id
+    validates :shipping_charge_id
+    validates :city_id
+    validates :days_ship_id
+  end
 end
