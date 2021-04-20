@@ -18,9 +18,15 @@ class Item < ApplicationRecord
     validates :name
     validates :details
     validates :price
+    validates :category_id
+    validates :condition_id
+    validates :shipping_charge_id
+    validates :city_id
+    validates :days_ship_id
   end
 
-  validates :price, numericality: { in: 300..9999999, message: 'Price Out of setting range' }
+  validates :price, 
+  numericality: { greater_than_or_equal_to: 300, less_than: 9999999,}
 
   with_options format: { with: /\A[0-9]+\z/, message: '半角数字で入力してください' } do
     validates :price

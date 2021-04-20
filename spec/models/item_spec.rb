@@ -34,7 +34,7 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーについての情報が空では登録できない' do
         @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include('Category Select')
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
       it 'カテゴリーについての情報が未選択では登録できない' do
@@ -46,73 +46,73 @@ RSpec.describe Item, type: :model do
       it '商品の状態についての情報が空では登録できない' do
         @item.condition_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include
+        expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
 
       it '商品の状態についての情報が未選択では登録できない' do
         @item.condition_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include
+        expect(@item.errors.full_messages).to include('Condition Select')
       end
 
       it '配送料の負担についての情報が空では登録できない' do
         @item.shipping_charge_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include
+        expect(@item.errors.full_messages).to include("Shipping charge can't be blank")
       end
 
       it '配送料の負担についての情報が未選択では登録できない' do
         @item.shipping_charge_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include
+        expect(@item.errors.full_messages).to include('Shipping charge Select')
       end
 
       it '発送元の地域についての情報が空では登録できない' do
         @item.city_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include
+        expect(@item.errors.full_messages).to include("City can't be blank")
       end
 
       it '発送元の地域についての情報が未選択では登録できない' do
         @item.city_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include
+        expect(@item.errors.full_messages).to include('City Select')
       end
 
       it '発送までの日数についての情報が空では登録できない' do
         @item.days_ship_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include
+        expect(@item.errors.full_messages).to include("Days ship can't be blank")
       end
 
       it '発送までの日数についての情報が未選択では登録できない' do
         @item.days_ship_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include
+        expect(@item.errors.full_messages).to include('Days ship Select')
       end
 
       it '販売価格についての情報が未入力では登録できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank", "Price Price Out of setting range", "Price 半角数字で入力してください")
+        expect(@item.errors.full_messages).to include("Price can't be blank")
       end
 
       it '販売価格は¥300未満では登録できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
 
       it '販売価格は¥10000000以上では登録できない' do
         @item.price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include
+        expect(@item.errors.full_messages).to include("Price must be less than 9999999")
       end
 
       it '販売価格は半角数字以外では登録できない' do
         @item.price = 'あああああ'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Price Out of setting range", "Price 半角数字で入力してください")
+        expect(@item.errors.full_messages).to include("Price 半角数字で入力してください")
       end
     end
   end
