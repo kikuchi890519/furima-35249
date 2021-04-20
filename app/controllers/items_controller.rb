@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
   # ログインユーザーのみにアクセスを許可する。
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @items = Item.all
-    # 記事一覧が新規投稿順に並ぶように記述します。
-    @items = Item.order('created_at DESC')
+    # @items = Item.all
+    # # 記事一覧が新規投稿順に並ぶように記述します。
+    # @items = Item.order('created_at DESC')
   end
 
   def new
@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    # binding.pry
     if @item.save
       redirect_to root_path
     else
