@@ -12,7 +12,6 @@ RSpec.describe Item, type: :model do
     end
 
     context '出品登録ができないとき' do
-
       it '商品画像が空では登録できない' do
         @item.image = nil
         @item.valid?
@@ -100,19 +99,19 @@ RSpec.describe Item, type: :model do
       it '販売価格は¥300未満では登録できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
 
       it '販売価格は¥10000000以上では登録できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than 9999999')
       end
 
       it '販売価格は半角数字以外では登録できない' do
         @item.price = 'あああああ'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price 半角数字で入力してください")
+        expect(@item.errors.full_messages).to include('Price 半角数字で入力してください')
       end
     end
   end

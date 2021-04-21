@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :item do
     name               { '時計' }
     details            { '2021年購入ロレックスの時計です。' }
-    price              { 500000 }
+    price              { 500_000 }
     category_id        { 1 }
     condition_id       { 1 }
     shipping_charge_id { 1 }
