@@ -26,7 +26,7 @@ class Item < ApplicationRecord
   end
 
   validates :price, 
-  numericality: { greater_than_or_equal_to: 300, less_than: 9999999,}
+  numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
   with_options format: { with: /\A[0-9]+\z/, message: '半角数字で入力してください' } do
     validates :price
