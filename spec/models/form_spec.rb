@@ -13,6 +13,11 @@ RSpec.describe Form, type: :model do
         it "すべての情報があれば登録ができること" do
           expect(@form).to be_valid
         end
+
+        it "建物名の記入がなくとも登録ができること" do
+          expect(@form).to be_valid
+          @form.building_name = ""
+        end
       end
 
       context '内容に問題ある場合' do
@@ -29,7 +34,7 @@ RSpec.describe Form, type: :model do
         end
     
         it "郵便番号の入力にハイフンが不足していること" do
-          @form.post_code = 1850022
+          @form.post_code = "1850022"
           @form.valid?
           expect(@form.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
         end

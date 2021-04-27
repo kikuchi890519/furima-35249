@@ -3,7 +3,8 @@ class Form
   include ActiveModel::Model
 
   # 保存したいカラム名（purchase_record,delivery）を全て記述する
-  attr_accessor :token, :user_id, :item_id, :post_code, :city_id, :municipality, :address, :building_name, :phone_number, :purchase_record_id
+  attr_accessor :token, :user_id, :item_id, :post_code, :city_id, :municipality, :address, :building_name, :phone_number
+  # purchase_recordはコントローラーから情報は取得していないので記述しない
 
   # バリデーションの処理を書く
   # -----ここから----------------

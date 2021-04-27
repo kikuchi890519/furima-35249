@@ -23,6 +23,8 @@ def create
   end
 end
 
+private
+
 def set_item
   @item = Item.find(params[:item_id])
 end
@@ -33,7 +35,6 @@ def redirect_to
   end
 end
 
-private
 # 【メモ書き】
 # paramsはできるだけ1つにまとめてあげる
 # String Parameter：require（データのオブジェクト名）、permit（保存の処理ができるカラム名）、merge（カラム名：追加したいデータ値）
