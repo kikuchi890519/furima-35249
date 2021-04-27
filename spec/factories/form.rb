@@ -7,7 +7,7 @@ FactoryBot.define do
     city_id              { 1 }
     municipality         { '国分寺市' }
     address              { '東元町1-1-1' }
-    building_name        { '国分寺ハイツ' }
+    building_name        { '' }
     phone_number         { "09012341234" }
   end
 end

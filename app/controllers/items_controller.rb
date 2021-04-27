@@ -4,10 +4,9 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :redirect_root, only: [:edit, :update, :destroy]
-  before_action :redirect, only: [:edit, :destroy]
+  before_action :redirect, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.all
     # 【メモ書き】
     # 記事一覧が新規投稿順に並ぶように記述する
     @items = Item.order('created_at DESC')
@@ -30,9 +29,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # if @item.purchase_record.present?
-    #    redirect_to root_path
-    # end
   end
 
   def update
@@ -45,9 +41,6 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to root_path
-    # if @item.purchase_record.present? 
-    #    redirect_to root_path
-    # end
   end
 
   private
