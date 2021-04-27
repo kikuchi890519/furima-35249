@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :form do
     token { "tok_abcdefghijk00000000000000000" }
+    # 【メモ書き】
     # formオブジェクトにはアソシエーションは使えない
 
     post_code            { "185-0022" }

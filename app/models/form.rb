@@ -1,18 +1,20 @@
 class Form 
+  # 【メモ書き】
   # ActiveModel::Modelを呼び出して、form_withメソッドに対応する機能とバリデーションを行う機能を持たせる
   include ActiveModel::Model
 
+  # 【メモ書き】
   # 保存したいカラム名（purchase_record,delivery）を全て記述する
   attr_accessor :token, :user_id, :item_id, :post_code, :city_id, :municipality, :address, :building_name, :phone_number
   # purchase_recordはコントローラーから情報は取得していないので記述しない
 
   # バリデーションの処理を書く
   # -----ここから----------------
-
   with_options presence: true do
     validates :token
     validates :user_id
     validates :item_id
+    # 【メモ書き】
     # （user_id,item_id）フォームオブジェクトでは
     # 直接アソシエーションを組んでいないためバリデーションが必要
 
@@ -26,7 +28,7 @@ class Form
   end
 
   # -----ここまで----------------
-
+  # 【メモ書き】
   # 各テーブルにデータを保存する処理を書く
   def save
     purchase_record = PurchaseRecord.create(user_id: user_id, item_id: item_id)

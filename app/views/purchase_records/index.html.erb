@@ -31,6 +31,7 @@
     </div>
     <%# /支払額の表示 %>
 
+    <%# 【メモ書き】 %>
     <%# データベースに保存しない場合のform_withの書き方 %>
     <%# <%= form_with url: "パス" do |form| %>
     <%= form_with model:@form, url:item_purchase_records_path, id:'charge-form', class: 'transaction-form-wrap',local: true do |f| %>

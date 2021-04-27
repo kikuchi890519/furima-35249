@@ -4,6 +4,7 @@ RSpec.describe Form, type: :model do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
     sleep 0.1
+    # 【メモ書き】
     # user,itemのFactoryBotのcreateする理由は購入するためには出品者、商品が必要であり、購入テストができない
     @form = FactoryBot.build(:form, user_id: user.id, item_id: item.id)
   end
