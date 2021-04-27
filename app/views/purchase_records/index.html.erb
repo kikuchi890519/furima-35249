@@ -33,7 +33,6 @@
 
     <%# データベースに保存しない場合のform_withの書き方 %>
     <%# <%= form_with url: "パス" do |form| %>
-
     <%= form_with model:@form, url:item_purchase_records_path, id:'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
     <%# カード情報の入力 %>

@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   # ログインユーザーのみにアクセスを許可する。
   before_action :authenticate_user!, except: [:index, :show]
-
   before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :redirect_root, only: [:edit, :update, :destroy]
 
@@ -28,8 +27,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.purchase_record.present? 
-      redirect_to root_path
+    if @item.purchase_record.present?
+       redirect_to root_path
     end
   end
 
@@ -42,13 +41,16 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
+    redirect_to root_path
+    if @item.purchase_record.present? 
+       redirect_to root_path
+    end
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name, :details, :category_id, :condition_id, :shipping_charge_id, :city_id, :days_ship_id,
-                                 :price, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :details, :category_id, :condition_id, :shipping_charge_id, :city_id, :days_ship_id, :price, :image).merge(user_id: current_user.id)
   end
 
   private

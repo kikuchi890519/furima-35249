@@ -10,9 +10,14 @@ class Form
 
   with_options presence: true do
     validates :token
+    validates :user_id
+    validates :item_id
+    # （user_id,item_id）フォームオブジェクトでは
+    # 直接アソシエーションを組んでいないためバリデーションが必要
+
     validates :municipality
     validates :address
-    validates :phone_number, format: {with: /\A\d{11}\z/, message: "can't be blank"}
+    validates :phone_number, format: {with: /\A\d{1,11}\z/, message: "can't be blank"}
     validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
   end
 
@@ -24,7 +29,6 @@ class Form
   # 各テーブルにデータを保存する処理を書く
   def save
     purchase_record = PurchaseRecord.create(user_id: user_id, item_id: item_id)
-    # 住所を保存する
     # cretae 左（カラム名）、右（コントローラーでストロングパラメーターに記載した情報）
     # purchase_recordは26行目で定義
     Delivery.create(post_code: post_code, city_id: city_id, municipality: municipality, address: address, building_name: building_name, phone_number:phone_number, purchase_record_id: purchase_record.id)

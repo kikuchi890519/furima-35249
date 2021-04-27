@@ -1,7 +1,12 @@
 require 'rails_helper'
 RSpec.describe Form, type: :model do
   before do
-    @form = FactoryBot.build(:form)
+    user = FactoryBot.create(:user)
+    # FactoryBotからuserをcreate
+    item = FactoryBot.create(:item)
+    # FactoryBotからitemをcreate
+    # 理由は購入するためには出品者、商品が必要であり、購入のテストができない
+    @form = FactoryBot.build(:form, user_id: user.id, item_id: item.id)
   end
 
     describe '商品購入' do
@@ -34,6 +39,12 @@ RSpec.describe Form, type: :model do
           @form.city_id = nil
           @form.valid?
           expect(@form.errors.full_messages).to include("City Select")
+        end
+
+        it '都道府県についての情報が未選択では登録できない' do
+          @form.city_id = 0
+          @form.valid?
+          expect(@form.errors.full_messages).to include('City Select')
         end
     
         it "市区町村が空では保存ができないこと" do
@@ -76,6 +87,18 @@ RSpec.describe Form, type: :model do
           @form.phone_number = "kkkkkkkkkkk"
           @form.valid?
           expect(@form.errors.full_messages).to include("Phone number can't be blank")
+        end
+
+        it "user_idが空では保存ができないこと" do
+          @form.user_id = ""
+          @form.valid?
+          expect(@form.errors.full_messages).to include("User can't be blank")
+        end
+
+        it "item_idが空では保存ができないこと" do
+          @form.item_id = ""
+          @form.valid?
+          expect(@form.errors.full_messages).to include("Item can't be blank")
         end
       end
     end
