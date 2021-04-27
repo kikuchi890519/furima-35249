@@ -2,7 +2,6 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
     # アソシエーションがない場合の記述（@itemの記述に出品者情報であるuser_idなどが必要）
-    # user = FactoryBot.create(:user)
     @item = FactoryBot.build(:item)
   end
 

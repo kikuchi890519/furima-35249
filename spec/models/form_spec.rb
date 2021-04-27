@@ -2,10 +2,9 @@ require 'rails_helper'
 RSpec.describe Form, type: :model do
   before do
     user = FactoryBot.create(:user)
-    # FactoryBotからuserをcreate
     item = FactoryBot.create(:item)
-    # FactoryBotからitemをcreate
-    # 理由は購入するためには出品者、商品が必要であり、購入のテストができない
+    sleep 0.1
+    # user,itemのFactoryBotのcreateする理由は購入するためには出品者、商品が必要であり、購入テストができない
     @form = FactoryBot.build(:form, user_id: user.id, item_id: item.id)
   end
 

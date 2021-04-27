@@ -1,23 +1,19 @@
 class PurchaseRecordsController < ApplicationController
-# ログインユーザーのみにアクセスを許可する。
+# 【メモ書き】authenticate_user!でログインユーザーのみにアクセスを許可する
 before_action :authenticate_user!, only: [:index, :create]
 before_action :set_item, only: [:index, :create]
+before_action :redirect_to, only: [:index, :create]
 
 def index
   @form = Form.new
-  if @item.purchase_record.present? || current_user.id == @item.user_id 
-  redirect_to root_path 
-  end
 end
 
 def create
   @form = Form.new(form_params)
+  # 【メモ書き】
   # formオブジェクトはモデルのようでモデルではない
   # valid?を使って@formのバリデーションをチェックする必要あり
   # 通常のモデルではsaveにバリデーションチェックと保存の機能あり
-  if @item.purchase_record.present? || current_user.id == @item.user_id 
-    redirect_to root_path 
-  end
   if @form.valid?
      pay_item
      @form.save
@@ -31,7 +27,14 @@ def set_item
   @item = Item.find(params[:item_id])
 end
 
+def redirect_to
+  if @item.purchase_record.present? || current_user.id == @item.user_id 
+     redirect_to root_path 
+  end
+end
+
 private
+# 【メモ書き】
 # paramsはできるだけ1つにまとめてあげる
 # String Parameter：require（データのオブジェクト名）、permit（保存の処理ができるカラム名）、merge（カラム名：追加したいデータ値）
 def form_params
