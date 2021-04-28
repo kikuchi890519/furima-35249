@@ -16,8 +16,8 @@ RSpec.describe Form, type: :model do
         end
 
         it "建物名の記入がなくとも登録ができること" do
-          expect(@form).to be_valid
           @form.building_name = ""
+          expect(@form).to be_valid
         end
       end
 
