@@ -1,13 +1,14 @@
 class ItemsController < ApplicationController
-  # ログインユーザーのみにアクセスを許可する。
+  # 【メモ書き】
+  # authenticate_user!はログインユーザーのみにアクセスを許可する。
   before_action :authenticate_user!, except: [:index, :show]
-
   before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :redirect_root, only: [:edit, :update, :destroy]
+  before_action :redirect, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.all
-    # 記事一覧が新規投稿順に並ぶように記述します。
+    # 【メモ書き】
+    # 記事一覧が新規投稿順に並ぶように記述する
     @items = Item.order('created_at DESC')
   end
 
@@ -45,8 +46,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :details, :category_id, :condition_id, :shipping_charge_id, :city_id, :days_ship_id,
-                                 :price, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :details, :category_id, :condition_id, :shipping_charge_id, :city_id, :days_ship_id, :price, :image).merge(user_id: current_user.id)
   end
 
   private
@@ -56,5 +56,11 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def redirect
+    if @item.purchase_record.present?
+      redirect_to root_path
+    end
   end
 end
