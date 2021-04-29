@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
+       redirect_to root_path
     else
       render :edit
     end
@@ -50,12 +51,12 @@ class ItemsController < ApplicationController
   end
 
   private
-  def redirect_root
-    redirect_to root_path unless @item.user_id == current_user.id
-  end
-
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def redirect_root
+    redirect_to root_path unless @item.user_id == current_user.id
   end
 
   def redirect

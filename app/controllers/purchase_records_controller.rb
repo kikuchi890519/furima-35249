@@ -2,7 +2,7 @@ class PurchaseRecordsController < ApplicationController
 # 【メモ書き】authenticate_user!でログインユーザーのみにアクセスを許可する
 before_action :authenticate_user!, only: [:index, :create]
 before_action :set_item, only: [:index, :create]
-before_action :redirect_to, only: [:index, :create]
+before_action :redirect_to_rootpath, only: [:index, :create]
 
 def index
   @form = Form.new
@@ -29,7 +29,7 @@ def set_item
   @item = Item.find(params[:item_id])
 end
 
-def redirect_to
+def redirect_to_rootpath
   if @item.purchase_record.present? || current_user.id == @item.user_id 
      redirect_to root_path 
   end
