@@ -6,20 +6,50 @@ a {
   background: #f8f8f8;
 }
 
+html,
+  body {
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .box {
+    width: 100vw; //vwは画面幅に対する相対値
+    height: 100vh; //vhは画面高さに対する相対値
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bg-ttl {
+    color: #fff;
+    line-height: 1.5;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+  }
+
 /* 画面上部の「人生を変えるフリマアプリ」帯部分 */
 .title-contents {
   width: 100vw;
-  background-image: image-url('furima-header01.png');
+  background-image: image-url("furima-header01.png");
   background-size: cover;
+  // 画像の縦横比を崩すことなく、拡大縮小する
   background-repeat: no-repeat;
+  // 背景画像を一回だけ表示し繰り返し使わない
   background-position: top center;
   display: flex;
   flex-direction: column;
+  // 上から順番に並べる
   align-items: flex-start;
   justify-content: center;
   padding: 5vh 15vw;
   color: #fff;
+  // 文字の色
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+  // テキストの影を追加
 }
 
 .service-title {
@@ -242,12 +272,14 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
 }
 
 .item-lists>.list {
   width: 37vh;
   padding: 1vw;
   background-color: #FFF;
+  
 }
 
 

@@ -1,7 +1,9 @@
 # README
+![bd0c6812671ee5e3de67a2854548e1b2](https://user-images.githubusercontent.com/80946751/119216057-4cf41b80-bb0c-11eb-9406-d52aa2d39bfc.jpeg)
 
 ## users
 |Column                    |Type   |Options                |
+|--------------------------|-------|-----------------------|
 |nickname                  |string |null:false, unique:true|
 |email                     |string |null:false  unique:true|
 |encrypted_password        |string |null:false             |
@@ -17,8 +19,9 @@
 
 ## items
 |Column             |Type       |Options          |
-|name          |string     |null:false       |
-|details       |text       |null:false       |
+|-------------------|-----------|-----------------|
+|name               |string     |null:false       |
+|details            |text       |null:false       |
 |price              |integer    |null:false       |
 |category_id        |integer    |null:false       |
 |condition_id       |integer    |null:false       |
@@ -33,6 +36,7 @@
 
 ## purchase_record
 |Column         |Type         |Options          |
+|---------------|-------------|-----------------|
 |user           |reference    |foreign_key: true|
 |item           |reference    |foreign_key: true|
 
@@ -43,6 +47,7 @@
 
 ## deliveries
 |Column             |Type      |Options          |
+|-------------------|----------|-----------------|
 |post_code          |string    |null:false       |
 |city_id            |integer   |null:false       |
 |municipality       |string    |null:false       |
